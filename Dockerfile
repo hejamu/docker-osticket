@@ -70,13 +70,13 @@ v${OSTICKET_VERSION}/osTicket-v${OSTICKET_VERSION}.zip; \
     mkdir /usr/local/src; \
     mv upload /usr/local/src/osticket; \
     # Hard link the sources to the public directory
-    cp -al /usr/local/src/osticket/. /var/www/html; \
+    cp -al /usr/local/src/osticket/. /var/www/html/osticket; \
     # Hide setup
-    rm -r /var/www/html/setup; \
+    rm -r /var/www/html/osticket/setup; \
     \
     for lang in ar az bg ca cs da de el es_ES et fr hr hu it ja ko lt mk mn nl no fa pl pt_PT \
         pt_BR sk sl sr_CS fi sv_SE ro ru vi th tr uk zh_CN zh_TW; do \
-        wget -q -O /var/www/html/include/i18n/${lang}.phar \
+        wget -q -O /var/www/html/osticket/include/i18n/${lang}.phar \
             https://s3.amazonaws.com/downloads.osticket.com/lang/${lang}.phar; \
     done
 ENV OSTICKET_PLUGINS_VERSION=62a280c2b1989a5206c5ad98fa24a20e2365a5ce \
@@ -92,7 +92,7 @@ ${OSTICKET_PLUGINS_VERSION}.tar.gz; \
     cd osTicket-plugins; \
     php make.php hydrate; \
     find * -maxdepth 0 -type d ! -path doc ! -path lib -exec mv '{}' \
-        /var/www/html/include/plugins +; \
+        /var/www/html/osticket/include/plugins +; \
     cd ..; \
     \
     rm -r osTicket-plugins /root/.composer
@@ -103,7 +103,7 @@ RUN set -ex; \
     wget -q -O osTicket-slack-plugin.tar.gz https://github.com/devinsolutions/\
 osTicket-slack-plugin/archive/${OSTICKET_SLACK_VERSION}.tar.gz; \
     echo "${OSTICKET_SLACK_SHA256SUM}  osTicket-slack-plugin.tar.gz" | sha256sum -c; \
-    tar -xzf osTicket-slack-plugin.tar.gz -C /var/www/html/include/plugins --strip-components 1 \
+    tar -xzf osTicket-slack-plugin.tar.gz -C /var/www/html/osticket/include/plugins --strip-components 1 \
         osTicket-slack-plugin-${OSTICKET_SLACK_VERSION}/slack; \
     rm osTicket-slack-plugin.tar.gz
 COPY root /
