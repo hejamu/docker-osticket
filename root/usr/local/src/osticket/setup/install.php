@@ -34,7 +34,7 @@ $vars = array(
   'cron_interval'   => getenv("CRON_INTERVAL")        ?: 5,
 
   'siri'     => getenv("INSTALL_SECRET"),
-  'config'   => getenv("INSTALL_CONFIG") ?: '/var/www/html/include/ost-sampleconfig.php'
+  'config'   => getenv("INSTALL_CONFIG") ?: '/var/www/html/osticket/include/ost-sampleconfig.php'
 );
 
 //Script settings
