@@ -105,7 +105,7 @@ if ($interval > 0) {
 /************************* OSTicket Installation *******************************************/
 
 //Create installer class
-define('OSTICKET_CONFIGFILE','/var/www/html/include/ost-config.php');
+define('OSTICKET_CONFIGFILE','/var/www/html/osticket/include/ost-config.php');
 $installer = new Installer(OSTICKET_CONFIGFILE); //Installer instance.
 
 //Determine if using linked container
