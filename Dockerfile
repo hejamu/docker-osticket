@@ -110,4 +110,4 @@ COPY root /
 CMD ["start"]
 STOPSIGNAL SIGTERM
 EXPOSE 80
-HEALTHCHECK CMD curl -fIsS https://physcip.uni-stuttgart.de/osticket || exit 1
+HEALTHCHECK CMD curl -fIsS https://www.physcip.uni-stuttgart.de/osticket || exit 1
